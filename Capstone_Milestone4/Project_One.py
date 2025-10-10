@@ -20,16 +20,16 @@ class AnimalShelter():
         #
         USER = user
         PASS = password
-        HOST = 'nv-desktop-services.apporto.com'
-        PORT = 32993
-        DB = 'AAC'
-        COL = 'animals'
+        HOST = "localhost"
+        PORT = 27017
+        DB = "AAC"
+        COL = "animals"
         #
         # Initialize Connection
         #
-        self.client = MongoClient('mongodb://%s:%s@%s:%d' % (USER,PASS,HOST,PORT))
-        self.database = self.client['%s' % (DB)]
-        self.collection = self.database['%s' % (COL)]
+        self.client = MongoClient(HOST, PORT, username=USER, password=PASS)
+        self.database = self.client["%s" % (DB)]
+        self.collection = self.database["%s" % (COL)]
 
 # Create method to insert into database collection (AAC.animals in this case)
     def create(self, insert_data) -> bool:
@@ -87,7 +87,7 @@ class AnimalShelter():
 
 # Module testing
 # # create an AnimalShelter object to handle CRUD functions
-# aac = AnimalShelter('aacuser', 'SNHU1234');
+# aac = AnimalShelter("aacuser", "SNHU1234");
 
 # # test the create function with the test animal
 # print(aac.create({
@@ -129,14 +129,14 @@ class AnimalShelter():
 #   "age_upon_outcome_in_weeks": 156.767857142857
 # });
 
-# # call update with animal_id 'B746874' and an update query to change "animal_type" to "Dog"
-# aac.update({'animal_id' : 'B746874'}, {"animal_type": "Dog"})
+# # call update with animal_id "B746874" and an update query to change "animal_type" to "Dog"
+# aac.update({"animal_id" : "B746874"}, {"animal_type": "Dog"})
 
 # # read the object again and ensure the change occured
 # aac.read({"date_of_birth": "-1"})
 
 # # delete the testAnimal by ObjectId
-# aac.delete({"$and" : [{'animal_type' : 'Dog'}, {'date_of_birth' : '-1'}]})
+# aac.delete({"$and" : [{"animal_type" : "Dog"}, {"date_of_birth" : "-1"}]})
 
 # # try to read the object by ObjectId that was deleted
 # aac.read({
