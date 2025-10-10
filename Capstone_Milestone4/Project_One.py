@@ -23,7 +23,7 @@ class AnimalShelter():
         HOST = "localhost"
         PORT = 27017
         DB = "AAC"
-        COL = "animals"
+        COL = "collection"
         #
         # Initialize Connection
         #
