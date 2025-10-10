@@ -1,9 +1,61 @@
-.venv
-\Lib\
-site-packages
-__pycache__
+# Virtual environment
+.venv/
+venv/
+env/
+
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# PyInstaller
+*.manifest
+*.spec
+
+# Distribution / build
+build/
+dist/
+*.egg-info/
+.eggs/
+
+# Installer logs
+pip-log.txt
+pip-delete-this-directory.txt
+pip-wheel-metadata/
+
+# Packaging
+*.egg
+*.whl
+
+# Unit test / coverage
+.coverage
+.coverage.*
+.pytest_cache/
+nosetests.xml
+coverage.xml
+*.cover
+.cache
+
+# Jupyter
 .ipynb_checkpoints
-.DS_Store
-.vscode
-.idea
+
+# Local env files
 .env
+.env.* 
+
+# Editor / IDE
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# macOS
+.DS_Store
+
+# Python-specific caches
+.mypy_cache/
+.pyre/
+.ropeproject/
+
+# Logs
+*.log
