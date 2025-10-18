@@ -18,16 +18,14 @@ class AnimalShelter():
         #
         # Connection Variables
         #
-        USER = user
-        PASS = password
         HOST = "localhost"
         PORT = 27017
         DB = "AAC"
-        COL = "collection"
+        COL = "animals"
         #
         # Initialize Connection
         #
-        self.client = MongoClient(HOST, PORT, username=USER, password=PASS)
+        self.client = MongoClient(HOST, PORT, username=user, password=password)
         self.database = self.client["%s" % (DB)]
         self.collection = self.database["%s" % (COL)]
 
@@ -36,7 +34,7 @@ class AnimalShelter():
         # if data, insert into database and return True
         if (insert_data != None):
             try:
-                self.database.collection.insert_one(insert_data)  # data should be dictionary
+                self.collection.insert_one(insert_data)  # data should be dictionary
                 return True
             # if there is no data, notify, and return False
             except:
@@ -51,15 +49,12 @@ class AnimalShelter():
         
         # query for the animal and return each dict in a list
         # will return empty list if animal/s not found
-        posts = list(self.database.collection.find(query))
+        posts = list(self.collection.find(query))
         # veryify at least 1 result, otherwise return empty list
         if (len(posts) == 0):
             print("No results found.")
             return []
         
-        # iterate over returned posts
-        for post in posts:
-            pprint.pprint(post)
         return posts
     
 # Update method to update database documents in collection (AAC.animals)
@@ -69,7 +64,7 @@ class AnimalShelter():
             return -1
         
         # call pyMongo update passing the query object, update by setting the update_data, saving the results
-        results = self.database.collection.update_many(query, {"$set": update_data})
+        results = self.collection.update_many(query, {"$set": update_data})
         # return the saved results
         return results.modified_count
         
@@ -80,7 +75,7 @@ class AnimalShelter():
             return -1
         
         # call pyMongo delete, passing in query and saving results
-        results = self.database.collection.delete_many(query)
+        results = self.collection.delete_many(query)
         # return the saved results
         return results.deleted_count
 

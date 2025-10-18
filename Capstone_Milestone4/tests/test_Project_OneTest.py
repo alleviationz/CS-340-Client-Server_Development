@@ -35,7 +35,7 @@ def test_animal():
 def test_AAC_Client_Setup(Client):
     assert Client.database != None
     assert Client.collection != None
-    assert Client.collection.name == "collection"
+    assert Client.collection.name == "animals"
     assert Client.collection.database.name == "AAC"
 
 def test_AAC_create(Client, test_animal):
