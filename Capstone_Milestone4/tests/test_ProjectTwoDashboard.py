@@ -3,8 +3,6 @@ from Capstone_Milestone4.Project_One import AnimalShelter as AAC
 
 # Configure the plotting routines
 import pandas as pd
-import matplotlib.pyplot as plt
-from bson.objectid import ObjectId
 
 
 @pytest.fixture(scope="module")

@@ -3,10 +3,7 @@
 
 # In[1]:
 
-
-import pprint
 from pymongo import MongoClient
-from bson.objectid import ObjectId
 
 class AnimalShelter():
     """ CRUD operations for Animal collection in MongoDB """
@@ -78,77 +75,3 @@ class AnimalShelter():
         results = self.collection.delete_many(query)
         # return the saved results
         return results.deleted_count
-
-
-# Module testing
-# # create an AnimalShelter object to handle CRUD functions
-# aac = AnimalShelter("aacuser", "SNHU1234");
-
-# # test the create function with the test animal
-# print(aac.create({
-#   "rec_num": "1",
-#   "age_upon_outcome": "3 years",
-#   "animal_id": "B746874",
-#   "animal_type": "Cat",
-#   "breed": "Domestic Shorthair Mix",
-#   "color": "Black/White",
-#   "date_of_birth": "-1",
-#   "datetime": "2017-04-11 09:00:00",
-#   "monthyear": "2017-04-11T09:00:00",
-#   "name": "",
-#   "outcome_subtype": "SCRP",
-#  "outcome_type": "Transfer",
-#   "sex_upon_outcome": "Neutered Male",
-#   "location_lat": 30.5066578739455,
-#   "location_long": -97.3408780722188,
-#   "age_upon_outcome_in_weeks": 156.767857142857
-# }));
-
-# # test the read function with the test animal
-# testAnimal = aac.read({
-#   "rec_num": "1",
-#   "age_upon_outcome": "3 years",
-#   "animal_id": "B746874",
-#   "animal_type": "Cat",
-#   "breed": "Domestic Shorthair Mix",
-#   "color": "Black/White",
-#   "date_of_birth": "-1",
-#   "datetime": "2017-04-11 09:00:00",
-#   "monthyear": "2017-04-11T09:00:00",
-#   "name": "",
-#   "outcome_subtype": "SCRP",
-#  "outcome_type": "Transfer",
-#   "sex_upon_outcome": "Neutered Male",
-#   "location_lat": 30.5066578739455,
-#   "location_long": -97.3408780722188,
-#   "age_upon_outcome_in_weeks": 156.767857142857
-# });
-
-# # call update with animal_id "B746874" and an update query to change "animal_type" to "Dog"
-# aac.update({"animal_id" : "B746874"}, {"animal_type": "Dog"})
-
-# # read the object again and ensure the change occured
-# aac.read({"date_of_birth": "-1"})
-
-# # delete the testAnimal by ObjectId
-# aac.delete({"$and" : [{"animal_type" : "Dog"}, {"date_of_birth" : "-1"}]})
-
-# # try to read the object by ObjectId that was deleted
-# aac.read({
-#   "rec_num": "1",
-#   "age_upon_outcome": "3 years",
-#   "animal_id": "B746874",
-#   "animal_type": "Cat",
-#   "breed": "Domestic Shorthair Mix",
-#   "color": "Black/White",
-#   "date_of_birth": "-1",
-#   "datetime": "2017-04-11 09:00:00",
-#   "monthyear": "2017-04-11T09:00:00",
-#   "name": "",
-#   "outcome_subtype": "SCRP",
-#  "outcome_type": "Transfer",
-#   "sex_upon_outcome": "Neutered Male",
-#   "location_lat": 30.5066578739455,
-#   "location_long": -97.3408780722188,
-#   "age_upon_outcome_in_weeks": 156.767857142857
-# })
