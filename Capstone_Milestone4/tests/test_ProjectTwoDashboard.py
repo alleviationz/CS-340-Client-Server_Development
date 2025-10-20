@@ -7,7 +7,7 @@ import pandas as pd
 
 @pytest.fixture(scope="module")
 def DataFrame():
-    db = AAC("aacuser", "SNHU1234")
+    db = AAC()
 
     df = pd.DataFrame.from_records(db.read({}))
 

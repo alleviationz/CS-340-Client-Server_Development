@@ -4,7 +4,7 @@ from Capstone_Milestone4.Project_One import AnimalShelter as AAC
 # fixutre to create AnimalShelter specifically within this module
 @pytest.fixture(scope="module")
 def Client():
-    return AAC("aacuser", "SNHU1234")
+    return AAC()
 
 @pytest.fixture(scope="module")
 def test_animal():
