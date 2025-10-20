@@ -1,30 +1,24 @@
-#!/usr/bin/env python
-# coding: utf-8
-
-# In[1]:
+import os
 
 from pymongo import MongoClient
+from pymongo.server_api import ServerApi
+from dotenv import load_dotenv
+
+load_dotenv()
 
 class AnimalShelter():
     """ CRUD operations for Animal collection in MongoDB """
-
-    def __init__(self, user, password):
+    def __init__(self):
         # Initializing the MongoClient
-        # This is hard-wired to use the aac database, the 
-        # animals collection, and the aac user.
-        #
-        # Connection Variables
-        #
-        HOST = "localhost"
-        PORT = 27017
-        DB = "AAC"
-        COL = "animals"
-        #
         # Initialize Connection
-        #
-        self.client = MongoClient(HOST, PORT, username=user, password=password)
-        self.database = self.client["%s" % (DB)]
-        self.collection = self.database["%s" % (COL)]
+        try:
+            self.client = MongoClient(os.getenv("ATLAS_URI"))
+            self.database = self.client["AAC"]
+            self.collection = self.database["animals"]
+
+        # catch all exceptions
+        except Exception as e:
+            print(f"Error connecting to database. Error: {e}")
 
 # Create method to insert into database collection (AAC.animals in this case)
     def create(self, insert_data) -> bool:
