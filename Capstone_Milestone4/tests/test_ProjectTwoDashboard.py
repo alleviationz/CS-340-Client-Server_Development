@@ -1,13 +1,11 @@
 import pytest
-from Capstone_Milestone4.Project_One import AnimalShelter as AAC
-
-# Configure the plotting routines
 import pandas as pd
 
+from src.Project_One import AnimalShelter
 
 @pytest.fixture(scope="module")
 def DataFrame():
-    db = AAC()
+    db = AnimalShelter()
 
     df = pd.DataFrame.from_records(db.read({}))
 

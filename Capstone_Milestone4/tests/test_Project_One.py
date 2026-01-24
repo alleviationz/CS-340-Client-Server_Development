@@ -1,10 +1,11 @@
 import pytest
-from Capstone_Milestone4.Project_One import AnimalShelter as AAC
+
+from src.Project_One import AnimalShelter
 
 # fixutre to create AnimalShelter specifically within this module
 @pytest.fixture(scope="module")
 def Client():
-    return AAC()
+    return AnimalShelter()
 
 @pytest.fixture(scope="module")
 def test_animal():
