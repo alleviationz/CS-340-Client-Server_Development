@@ -7,7 +7,7 @@ from dotenv import load_dotenv
 load_dotenv()
 
 class AnimalShelter():
-    # Client object allowing CRUD operations for the animals collection in the AAC database (MongoAtlas)
+    # Client's initialization: API allowing CRUD operations for the animals collection in the AAC database (MongoAtlas)
     def __init__(self):
         # Initializing the MongoClient and Atlas connection
         try:
